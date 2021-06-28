@@ -15,7 +15,10 @@ const stopCount = (e) =>{
     const interval = setInterval(() => {
       if(!paused)
         setCounter(counter + 1);
+      else
+        clearInterval(interval);        
     }, 1000);
+    
 
     return () => {
       clearInterval(interval);

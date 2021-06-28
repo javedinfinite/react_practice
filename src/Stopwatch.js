@@ -1,6 +1,7 @@
 import {React, useState, useEffect } from "react";
 
-
+var c = 0
+ 
 export default function Stopwatch() {
   const [ms, setMs] = useState(0);
   const [sec, setSec] = useState(0);
@@ -21,12 +22,17 @@ export default function Stopwatch() {
 
   }
   useEffect(() => {
+    // console.log('useefect called', ++c)
     const interval = setInterval(() => {
+      // console.log('I am setimer')
         if(!paused)
             timer()
+        else
+          clearInterval(interval);
     }, 10);
 
     return () => {
+      // console.log('I am cleartimer',++c)
       clearInterval(interval);
     };
   });
